@@ -4,6 +4,7 @@ local healpart = 0
 local blink_time = 0
 local blink_signal = math.random(30, 250)
 local hold = 0
+
 function pings.reset()
       if not player:getVelocity().xyz:length() == 0 then
             animations.Walterv5.dance1:stop()
@@ -109,12 +110,7 @@ function events.tick()
             animations.Walterv5.climb_walk:setPlaying(climbing and not in_air and walking)
             animations.Walterv5.battle_idle:setPlaying(battle and not crouching and idle)
             animations.Walterv5.battle_walk:setPlaying(battle and not crouching and walking and not idle)
-            if riding then
-                  walter:setPos(0, 8, 0)
-            else
-                  walter:setPos(0, 0, 0)
-            end
-            
+                        
             animations.Walterv5.sleep:setPlaying(sleeping)
             animations.Walterv5.swim:setPlaying(swimming)
             animations.Walterv5.charging:setPlaying(charging)
