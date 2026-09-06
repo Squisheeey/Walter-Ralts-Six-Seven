@@ -1,3 +1,7 @@
+function events.ENTITY_INIT()
+      DancingActive = false
+end
+
 local function stop_idle()
       animations.Walterv5.ground_holding_idle:stop()
       animations.Walterv5.food_idle:stop()
@@ -7,10 +11,6 @@ end
 
 local mainPage = action_wheel:newPage("Basic")
 action_wheel:setPage(mainPage)
-
-function events.ENTITY_INIT()
-      DancingActive = false
-end
 
 local function playSoundRadius(radius, sound, position, volume, pitch, loop)
       local target = client:getViewer():getPos()
