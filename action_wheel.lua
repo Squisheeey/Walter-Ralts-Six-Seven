@@ -1,7 +1,9 @@
 function events.ENTITY_INIT()
       DancingActive = false
 end
-
+local states = {
+      sixseven = false
+}
 local function stop_idle()
       animations.Walterv5.ground_holding_idle:stop()
       animations.Walterv5.food_idle:stop()
@@ -42,11 +44,31 @@ function pings.shimmy()
       DancingActive = true
       animations.Walterv5.dance1:play()
 end
+
+function pings.expression(name, state)
+	states[name] = state
+	if animations.Walterv5[name] then
+		if state then	
+			animations.Walterv5[name]:play()
+		else
+			animations.Walterv5[name]:stop()
+		end
+	end
+end
+
 local dance = mainPage:newAction()
 dance:setTitle("Shimmy")
 dance:setItem("minecraft:music_disc_cat")
 dance:onLeftClick(function()
       pings.shimmy()
+end)
+
+local sixseven = mainPage:newAction()
+	:title("SIX SEVEN!")
+	:toggleTitle("Stop 6 7")
+	:item("minecraft:dried_kelp")
+	:onToggle(function(state)
+		pings.expression("sixseven", state)
 end)
 
 local part_hat = models.Walterv5.ralts.body.torso.chest.header.Hat
